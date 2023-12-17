@@ -6,18 +6,21 @@ import pyttsx3#to convert msg to voice
 from tkinter import messagebox,filedialog,PhotoImage
 from tkinter import *
 import speech_recognition as sr  #to access mic of system
-from win32com.client import constants, Dispatch #for speaker
+# from win32com.client import constants, Dispatch #for speaker
+from Foundation import NSAppleScript
+from AppKit import NSWorkspace,NSSpeechSynthesizer
 import keyboard
-
-Working_Dir = os.getcwd()
+os.environ['TK_SILENCE_DEPRECATION'] = '1'
+# Working_Dir = os.getcwd()
 r = sr.Recognizer()
 mic = sr.Microphone(device_index=1)
-speaker = Dispatch("SAPI.SpVoice")
+# speaker = Dispatch("SAPI.SpVoice")
+speaker = NSSpeechSynthesizer.alloc().init()
 
 root = tk.Tk()
 root.state("zoomed")#"%dx%d" % (width, height)
 root.wm_title('Voice to Text and VisaVersa By MUSTAFA BHARMAL')
-bg = PhotoImage(file = "W:/ICT/SEM 3/PWP/Project/Final/bc.png")
+bg = PhotoImage(file='/Users/mrperfect/Work/Project/Speak-Write/bc.png')
 img_label = tk.Label( root, image = bg)
 img_label.place(x = 0, y = 0)
 
